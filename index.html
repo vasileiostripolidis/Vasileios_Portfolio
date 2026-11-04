@@ -236,6 +236,27 @@ footer{padding:24px 0 64px;font-size:13.5px;color:var(--faint);display:flex;just
 @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 
 /* ---------- responsive ---------- */
+/* projects */
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.proj{position:relative;display:flex;flex-direction:column;gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s}
+.proj::before{content:"";position:absolute;inset:0;background:radial-gradient(420px 200px at 0% 0%,var(--pc,rgba(20,184,166,.14)),transparent 70%);pointer-events:none}
+.proj:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--accent) 40%,var(--line))}
+.proj-head{position:relative;display:flex;align-items:center;gap:14px}
+.proj-ic{width:56px;height:56px;flex:none;border-radius:15px;display:grid;place-items:center;background:#0d1214;border:1px solid rgba(255,255,255,.08);overflow:hidden}
+.proj-ic img{display:block}
+.proj-head h3{font-size:19px;color:var(--text);line-height:1.2}
+.proj-kind{font-size:12.5px;color:var(--faint);font-weight:500}
+.proj p{position:relative;font-size:14px;line-height:1.6}
+.proj .tags{position:relative}
+.proj-links{position:relative;display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
+.proj-links a{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;padding:7px 13px;border-radius:999px;border:1px solid var(--line);color:var(--text);transition:border-color .2s,background .2s}
+.proj-links a:hover{border-color:color-mix(in srgb,var(--accent) 50%,var(--line))}
+.proj-links a.main{background:var(--accent);border-color:var(--accent);color:#fff}
+:root[data-theme="dark"] .proj-links a.main{color:#06211e}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .proj-links a.main{color:#06211e}}
+.proj-links svg{width:14px;height:14px}
+.proj-note{font-size:12.5px;color:var(--faint);margin-top:14px}
+@media (max-width:1000px){.proj-grid{grid-template-columns:1fr}}
 @media (max-width:1100px){.stats{grid-template-columns:1fr 1fr}}
 @media (max-width:1000px){
   .photo{margin-bottom:28px}
@@ -288,6 +309,7 @@ footer{padding:24px 0 64px;font-size:13.5px;color:var(--faint);display:flex;just
     <nav class="nav" id="nav">
       <a href="#about"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span lang="el">Σχετικά</span><span lang="en">About</span></a>
       <a href="#experience"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg><span lang="el">Εμπειρία</span><span lang="en">Experience</span></a>
+      <a href="#projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span lang="el">Έργα</span><span lang="en">Projects</span></a>
       <a href="#education"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 9 12 4 2 9l10 5 10-5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg><span lang="el">Σπουδές</span><span lang="en">Education</span></a>
       <a href="#skills"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg><span lang="el">Δεξιότητες</span><span lang="en">Skills</span></a>
       <a href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span lang="el">Επικοινωνία</span><span lang="en">Contact</span></a>
@@ -447,6 +469,39 @@ footer{padding:24px 0 64px;font-size:13.5px;color:var(--faint);display:flex;just
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
     </button>
     
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="eyebrow reveal"><span lang="el">Έργα</span><span lang="en">Projects</span></div>
+    <h2 class="reveal"><span lang="el">Εφαρμογές που φτιάχνω</span><span lang="en">Apps I build</span></h2>
+    <div class="proj-grid">
+      <article class="proj reveal" style="--pc:rgba(20,184,166,.16)">
+        <div class="proj-head"><div class="proj-ic"><img src="projects/orbit.png" width="44" alt=""></div><div><h3>Orbit</h3><div class="proj-kind"><span lang="el">Windows 10 / 11</span><span lang="en">Windows 10 / 11</span></div></div></div>
+        <p><span lang="el">Ένα μικρό ρομποτάκι που ζει στη γραμμή εργασιών των Windows. Πιάνει κάθε ειδοποίηση, κρατά υπενθυμίσεις και σημειώσεις, παίζει τη μουσική σου και φέρνει βοηθούς για τα οικονομικά και τα παράθυρά σου.</span><span lang="en">A little robot that lives in your Windows taskbar. It catches every notification, keeps your reminders and notes, plays your music and brings helpers for your finances and your windows.</span></p>
+        <div class="tags"><span class="tag">C++20</span><span class="tag">Win32</span><span class="tag">GDI+</span><span class="tag">WinRT</span></div>
+        <div class="proj-links"><a class="main" href="https://github.com/vasileiostripolidis/Orbit/releases/latest/download/Orbit.exe" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span lang="el">Λήψη για Windows</span><span lang="en">Download for Windows</span></a><a class="" href="https://github.com/vasileiostripolidis/Orbit" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg><span lang="el">Σελίδα</span><span lang="en">Page</span></a></div>
+      </article>
+      <article class="proj reveal" style="--pc:rgba(110,231,160,.14)">
+        <div class="proj-head"><div class="proj-ic"><svg viewBox="0 0 100 100" width="56" height="56"><rect width="100" height="100" fill="#121a16"/><path d="M76 24 C46 26 28 44 25 74 C52 74 72 56 76 24 Z" fill="#6EE7A0"/><path d="M29 72 C42 56 54 45 66 36" stroke="#111814" stroke-width="5.5" stroke-linecap="round" fill="none"/></svg></div><div><h3>Flipleaf</h3><div class="proj-kind"><span lang="el">Windows · macOS · Linux · Web</span><span lang="en">Windows · macOS · Linux · Web</span></div></div></div>
+        <p><span lang="el">Ελαφρύς, ιδιωτικός αναγνώστης και επεξεργαστής PDF: ανάγνωση, επεξεργασία, υπογραφή, οργάνωση, μετατροπή και προστασία. Δουλεύει χωρίς σύνδεση, χωρίς τηλεμετρία.</span><span lang="en">A light, private PDF reader and editor: read, edit, sign, organize, convert and protect. Works offline, with no telemetry.</span></p>
+        <div class="tags"><span class="tag">Tauri 2</span><span class="tag">Rust</span><span class="tag">PDF.js</span><span class="tag">PDFium</span></div>
+        <div class="proj-links"><a class="main" href="https://github.com/vasileiostripolidis/flipleaf/releases/latest" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span lang="el">Λήψη</span><span lang="en">Download</span></a><a class="" href="https://vasileiostripolidis.github.io/flipleaf/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg><span lang="el">Άνοιγμα στον browser</span><span lang="en">Open in browser</span></a></div>
+      </article>
+      <article class="proj reveal" style="--pc:rgba(234,179,8,.13)">
+        <div class="proj-head"><div class="proj-ic"><img src="projects/oktoichos.png" width="56" height="56" alt=""></div><div><h3>Οκτώηχος</h3><div class="proj-kind"><span lang="el">Android · iPhone σύντομα</span><span lang="en">Android · iPhone soon</span></div></div></div>
+        <p><span lang="el">Εορτολόγιο με βίους αγίων και νηστείες, Τυπική Διάταξη, Ισοκράτης, νέα και ναοί όλων των Μητροπόλεων της Ελλάδος, σε μία εφαρμογή.</span><span lang="en">Church calendar with the lives of the saints and the fasts, the Typikon, an ison drone, news and the churches of every Metropolis in Greece, in one app.</span></p>
+        <div class="tags"><span class="tag">Android</span><span class="tag">Mobile</span><span class="tag">Byzantine music</span></div>
+        <div class="proj-links"><a class="main" href="https://vasileiostripolidis.github.io/oktoichos/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg><span lang="el">Σελίδα εφαρμογής</span><span lang="en">App page</span></a></div>
+      </article>
+      <article class="proj reveal" style="--pc:rgba(59,130,246,.15)">
+        <div class="proj-head"><div class="proj-ic"><img src="projects/vero.png" width="56" height="56" alt=""></div><div><h3>Vero</h3><div class="proj-kind"><span lang="el">PDA · Android · iPhone · Tablet</span><span lang="en">PDA · Android · iPhone · Tablet</span></div></div></div>
+        <p><span lang="el">Παραγγελιοληψία για εστίαση από το PDA ή το κινητό του σερβιτόρου: τραπέζια, παραγγελίες, εκτύπωση σε κουζίνα και μπαρ, λογαριασμός. Δουλεύει και χωρίς internet.</span><span lang="en">Order taking for restaurants from the waiter's PDA or phone: tables, orders, printing to kitchen and bar, the bill. Works without internet too.</span></p>
+        <div class="tags"><span class="tag">Restaurants</span><span class="tag">Offline</span><span class="tag">Printing</span></div>
+        <div class="proj-links"><a class="main" href="https://vasileiostripolidis.github.io/Vero/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg><span lang="el">Σελίδα εφαρμογής</span><span lang="en">App page</span></a></div>
+      </article>
+    </div>
+    <p class="proj-note reveal"><span lang="el">Οι εφαρμογές είναι δωρεάν· ο κώδικάς τους είναι ιδιωτικός.</span><span lang="en">The apps are free; their source code is private.</span></p>
   </section>
 
   <!-- EDUCATION -->
